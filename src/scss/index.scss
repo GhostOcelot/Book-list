@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 10px;
+  font-family: "Roboto Slab", serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  .form-container {
+    background-color: aquamarine;
+    flex-basis: 40%;
+    margin: 10px;
+  }
+
+  .book-list {
+    background-color: aquamarine;
+    min-height: 10px;
+    flex-basis: 60%;
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .single-book {
+      background-color: white;
+      flex-basis: 30%;
+      min-width: 200px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      height: 250px;
+      position: relative;
+      .remove-book-button {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        bottom: 20px;
+        left: calc(50% - 15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.title {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  .input {
+    padding: 10px;
+    margin: 10px;
+    width: 90%;
+    font-family: "Roboto Slab", serif;
+  }
+}
+
+.remove-book-button {
+  padding: 10px;
+}
+
+.footer {
+  text-align: center;
+  background-color: aquamarine;
+  padding: 10px;
+  margin: 10px;
+}
+
+.small {
+  color: #888;
+  font-size: 0.8em;
+}
