@@ -58,5 +58,5 @@ export const createBookList = (currentBooksList) => {
     bookList.appendChild(singleBook)
   })
   updateBooksCounter()
-  createFilterSelect(currentBooksList)
+  createFilterSelect(books)
 }

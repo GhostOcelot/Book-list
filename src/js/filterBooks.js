@@ -4,9 +4,9 @@ import { books } from "./books"
 export const createFilterSelect = (books) => {
   const select = document.createElement("select")
   select.classList.add("filter-by-category")
-  const categories = []
   select.innerHTML += `<option>Filtruj przez kategorię</option>`
   select.innerHTML += `<option class="category-filter-option">wszystkie</option>`
+  const categories = []
   books.forEach((item) => {
     if (!categories.includes(item.category)) {
       categories.push(item.category)
