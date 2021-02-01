@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
 
 $main-font: "Ubuntu", sans-serif;
-$box-color: purple;
+$box-color: rgba(255, 113, 137, 0.9);
 $text-color: white;
+$button-color: rgb(85, 64, 89);
 
 * {
   margin: 0;
@@ -11,7 +12,7 @@ $text-color: white;
 }
 
 body {
-  margin: 10px;
+  margin: 40px;
   font-family: $main-font;
   color: $text-color;
 }
@@ -20,7 +21,8 @@ body {
   text-align: center;
   background-color: $box-color;
   padding: 15px;
-  margin: 10px;
+  margin: 0 10px 40px 10px;
+  color: $button-color;
 }
 
 .main-container {
@@ -30,15 +32,66 @@ body {
     background-color: $box-color;
     flex-basis: 30%;
     margin: 10px;
+    padding: 20px 0;
+    .add-book-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      .input {
+        padding: 10px;
+        margin: 10px;
+        width: 90%;
+        font-family: $main-font;
+        border: none;
+      }
+      .submit-button {
+        cursor: pointer;
+        background-color: $button-color;
+        color: $text-color;
+      }
+      .warning {
+        color: $button-color;
+        font-size: 0.8em;
+        font-weight: 700;
+      }
+    }
+    .add-category-form {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      margin: 20px 0 10px 0;
+      .input {
+        padding: 10px;
+        font-family: $main-font;
+      }
+      .add-category-input {
+        width: calc(90% - 40px - 20px);
+        margin-right: 20px;
+        border: none;
+      }
+      .add-category-button {
+        border: none;
+        width: 35px;
+
+        cursor: pointer;
+        background-color: $button-color;
+        color: $text-color;
+      }
+    }
   }
   .right-container {
     display: flex;
     flex-direction: column;
     flex-basis: 70%;
+    padding: 0 0 0 40px;
     .counters-container {
       background-color: $box-color;
-      margin: 10px;
+      margin: 10px 10px 40px 10px;
       padding: 20px;
+      font-size: 1.2em;
+      font-weight: 700;
+      color: $button-color;
       .category-label {
         font-size: 0.7em;
       }
@@ -58,7 +111,7 @@ body {
         min-width: 200px;
         margin: 10px;
         padding: 10px;
-        border-radius: 5px;
+        color: $button-color;
         height: 250px;
         position: relative;
         .title {
@@ -84,48 +137,24 @@ body {
           padding: 10px;
           border-radius: 50%;
           border: none;
-          background-color: $box-color;
+          background-color: $button-color;
           color: $text-color;
           font-weight: bold;
+          cursor: pointer;
         }
       }
     }
   }
 }
 
-.add-book-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  .input {
-    padding: 10px;
-    margin: 10px;
-    width: 90%;
-    font-family: $main-font;
-  }
-}
-
-.add-category-form {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  margin: 20px 0 10px 0;
-  .input {
-    padding: 10px;
-    font-family: $main-font;
-  }
-  .add-category-input {
-    width: calc(90% - 40px - 20px);
-    margin-right: 20px;
-  }
-  .add-category-button {
-    width: 40px;
-  }
-}
-
 @media (max-width: 1000px) {
   .main-container {
     flex-direction: column;
+    .right-container {
+      padding: 40px 0 0 0;
+      .counters-container {
+        margin-top: 0;
+      }
+    }
   }
 }

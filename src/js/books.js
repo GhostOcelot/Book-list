@@ -16,11 +16,16 @@ export const addBook = () => {
   const author = document.querySelector(".author-input").value.trim()
   const category = document.querySelector(".category-select").value.trim()
   const priority = document.querySelector(".priority-select").value.trim()
-  books.push(new Book(title, author, category, priority))
-  localStorage.setItem("books", JSON.stringify(books))
-  document.querySelector(".add-book-form").reset()
-  createBookList()
-  updateCategoriesCounter()
+  if (title && author) {
+    books.push(new Book(title, author, category, priority))
+    localStorage.setItem("books", JSON.stringify(books))
+    document.querySelector(".add-book-form").reset()
+    createBookList()
+    updateCategoriesCounter()
+    document.querySelector(".warning").style.display = "none"
+  } else {
+    document.querySelector(".warning").style.display = "block"
+  }
 }
 
 const removeBook = (e) => {

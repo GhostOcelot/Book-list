@@ -69,6 +69,14 @@ const createAddBookButton = () => {
   return addBookButton
 }
 
+const createValidationWarning = () => {
+  const validationWarning = document.createElement("p")
+  validationWarning.textContent = "podaj tytuł i autora"
+  validationWarning.classList.add("warning")
+  validationWarning.setAttribute("style", "display: none")
+  return validationWarning
+}
+
 export const renderForms = () => {
   const formContainer = document.querySelector(".form-container")
   const addBookForm = createAddBookForm()
@@ -77,6 +85,7 @@ export const renderForms = () => {
   addBookForm.appendChild(createCategorySelect())
   addBookForm.appendChild(createPrioritySelect())
   addBookForm.appendChild(createAddBookButton())
+  addBookForm.appendChild(createValidationWarning())
 
   const addCategoryForm = createAddCategoryForm()
   addCategoryForm.appendChild(createAddCategoryInput())
