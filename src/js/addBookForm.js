@@ -1,4 +1,11 @@
-import { addBook, categories, updateBooksCounter } from "./books"
+import { addBook, updateBooksCounter } from "./books"
+import {
+  createAddCategoryForm,
+  createAddCategoryInput,
+  createAddCategoryButton,
+} from "./addCategoryForm"
+
+export let categories = ["kryminał", "sci-fi", "fantasy", "poezja", "dramat", "nauki ścisłe"]
 
 const createAddBookForm = () => {
   const addBookForm = document.createElement("form")
@@ -25,7 +32,9 @@ const createAuthorInput = () => {
 const createCategorySelect = () => {
   const categorySelect = document.createElement("select")
   categorySelect.classList.add("category-select", "input")
-
+  JSON.parse(localStorage.getItem("categories"))
+    ? (categories = JSON.parse(localStorage.getItem("categories")))
+    : null
   categories.forEach((item) => {
     const option = document.createElement("option")
     option.setAttribute("value", item)
@@ -52,7 +61,7 @@ const createAddBookButton = () => {
   const addBookButton = document.createElement("input")
   addBookButton.classList.add("submit-button", "input")
   addBookButton.setAttribute("type", "submit")
-  addBookButton.setAttribute("value", "Add book")
+  addBookButton.setAttribute("value", "dodaj książkę do listy")
   addBookButton.addEventListener("click", (e) => {
     e.preventDefault()
     addBook()
@@ -60,33 +69,7 @@ const createAddBookButton = () => {
   return addBookButton
 }
 
-const createAddCategortyInput = () => {
-  const addCategoryInput = document.createElement("input")
-  addCategoryInput.classList.add("add-category-input", "input")
-  addCategoryInput.setAttribute("type", "text")
-  addCategoryInput.setAttribute("placeholder", "wpisz nazwę kategorii")
-  return addCategoryInput
-}
-
-const createAddCategoryButton = () => {
-  const addCategoryButton = document.createElement("button")
-  addCategoryButton.classList.add("add-category-button", "input")
-  addCategoryButton.textContent = "Add new category"
-  addCategoryButton.addEventListener("click", addCategory)
-  return addCategoryButton
-}
-
-const addCategory = (e) => {
-  e.preventDefault()
-  const newCategory = document.querySelector(".add-category-input")
-  if (newCategory.value.trim()) {
-    categories.push(newCategory.value.trim())
-    renderForm()
-  }
-  newCategory.value = ""
-}
-
-export const renderForm = () => {
+export const renderForms = () => {
   const formContainer = document.querySelector(".form-container")
   const addBookForm = createAddBookForm()
   addBookForm.appendChild(createTitleInput())
@@ -94,10 +77,14 @@ export const renderForm = () => {
   addBookForm.appendChild(createCategorySelect())
   addBookForm.appendChild(createPrioritySelect())
   addBookForm.appendChild(createAddBookButton())
-  addBookForm.appendChild(createAddCategortyInput())
-  addBookForm.appendChild(createAddCategoryButton())
+
+  const addCategoryForm = createAddCategoryForm()
+  addCategoryForm.appendChild(createAddCategoryInput())
+  addCategoryForm.appendChild(createAddCategoryButton())
+
   formContainer.innerHTML = null
   formContainer.appendChild(addBookForm)
-  formContainer.appendChild(addBookForm)
+  formContainer.appendChild(addCategoryForm)
+
   updateBooksCounter()
 }

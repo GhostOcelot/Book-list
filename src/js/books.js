@@ -1,3 +1,5 @@
+import { updateCategoriesCounter } from "./categoriesCounter"
+
 export class Book {
   constructor(title, author, category, priority) {
     this.title = title
@@ -9,8 +11,6 @@ export class Book {
 
 let books = []
 
-export const categories = ["kryminał", "sci-fi", "fantasy", "poezja", "dramat", "nauki ścisłe"]
-
 export const addBook = () => {
   const title = document.querySelector(".title-input").value.trim()
   const author = document.querySelector(".author-input").value.trim()
@@ -20,6 +20,7 @@ export const addBook = () => {
   localStorage.setItem("books", JSON.stringify(books))
   document.querySelector(".add-book-form").reset()
   createBookList()
+  updateCategoriesCounter()
 }
 
 const removeBook = (e) => {
@@ -27,11 +28,12 @@ const removeBook = (e) => {
   books = books.filter((item) => bookToRemove.firstElementChild.textContent !== item.title)
   localStorage.setItem("books", JSON.stringify(books))
   createBookList()
+  updateCategoriesCounter()
 }
 
 export const updateBooksCounter = () => {
   const booksCounter = document.querySelector(".books-counter")
-  booksCounter.textContent = `Books on the list: ${books.length}`
+  booksCounter.textContent = `Ilość książek na liście: ${books.length}`
 }
 
 export const createBookList = () => {

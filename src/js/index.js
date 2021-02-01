@@ -1,5 +1,7 @@
-import { renderForm } from "./addBookForm"
+import { renderForms } from "./addBookForm"
 import { createBookList } from "./books"
+import { updateCategoriesCounter } from "./categoriesCounter"
 
-renderForm()
+renderForms()
 createBookList()
+updateCategoriesCounter()
