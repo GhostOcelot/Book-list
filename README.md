@@ -1,6 +1,6 @@
 # Book list
 
-Junior front-end dev recruitment task. Moderately complex todo list variation in vanilla JS with couples of interesting features. Includes basic webpack configuration, data storage in the browser via LocalStorage, adding custom categories option and items counter including items in each category.
+Junior front-end dev recruitment task. Moderately complex todo list variation in vanilla JS with couples of interesting features. Includes basic webpack configuration, data storage in the browser via LocalStorage, adding custom categories option and items counter including items in each category. Books on the list can be filtered by category.
 
 ## Live version
 
