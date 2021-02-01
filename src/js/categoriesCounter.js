@@ -1,8 +1,8 @@
+import { categories } from "./addBookForm"
 const counterContainer = document.querySelector(".counters-container")
 
 export const updateCategoriesCounter = () => {
-  const books = JSON.parse(localStorage.getItem("books"))
-  const categories = JSON.parse(localStorage.getItem("categories"))
+  const books = localStorage.getItem("books") ? JSON.parse(localStorage.getItem("books")) : []
   counterContainer.innerHTML = ""
   categories.forEach((item) => {
     let counter = 0
@@ -11,6 +11,6 @@ export const updateCategoriesCounter = () => {
         counter++
       }
     })
-    counterContainer.innerHTML += `<span>${item}: ${counter} | </span>`
+    counterContainer.innerHTML += `<span><span class="category-label">${item}:</span> ${counter} | </span>`
   })
 }

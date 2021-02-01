@@ -32,7 +32,7 @@ const createAuthorInput = () => {
 const createCategorySelect = () => {
   const categorySelect = document.createElement("select")
   categorySelect.classList.add("category-select", "input")
-  JSON.parse(localStorage.getItem("categories"))
+  localStorage.getItem("categories")
     ? (categories = JSON.parse(localStorage.getItem("categories")))
     : null
   categories.forEach((item) => {

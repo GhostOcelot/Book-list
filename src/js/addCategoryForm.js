@@ -1,4 +1,5 @@
 import { categories, renderForms } from "./addBookForm"
+import { updateCategoriesCounter } from "./categoriesCounter"
 
 export const createAddCategoryForm = () => {
   const addCategoryFrom = document.createElement("form")
@@ -30,5 +31,6 @@ const addCategory = (e) => {
     localStorage.setItem("categories", JSON.stringify(categories))
     renderForms()
   }
+  updateCategoriesCounter()
   newCategory.value = ""
 }

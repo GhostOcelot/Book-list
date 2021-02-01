@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
 
+$main-font: "Ubuntu", sans-serif;
 $box-color: purple;
 $text-color: white;
 
@@ -11,8 +12,15 @@ $text-color: white;
 
 body {
   margin: 10px;
-  font-family: "Roboto Slab", serif;
+  font-family: $main-font;
   color: $text-color;
+}
+
+.header {
+  text-align: center;
+  background-color: $box-color;
+  padding: 15px;
+  margin: 10px;
 }
 
 .main-container {
@@ -30,23 +38,26 @@ body {
     .counters-container {
       background-color: $box-color;
       margin: 10px;
-      padding: 10px;
+      padding: 20px;
+      .category-label {
+        font-size: 0.7em;
+      }
     }
     .book-list {
       background-color: $box-color;
-      min-height: 10px;
+      min-height: 400px;
       margin: 10px;
+      padding: 10px;
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
       .single-book {
-        background-color: white;
+        background-color: $text-color;
         color: black;
         flex-basis: 30%;
         min-width: 200px;
         margin: 10px;
         padding: 10px;
-        border: 1px solid black;
         border-radius: 5px;
         height: 250px;
         position: relative;
@@ -72,7 +83,10 @@ body {
           align-items: center;
           padding: 10px;
           border-radius: 50%;
-          border: 1px solid black;
+          border: none;
+          background-color: $box-color;
+          color: $text-color;
+          font-weight: bold;
         }
       }
     }
@@ -88,7 +102,7 @@ body {
     padding: 10px;
     margin: 10px;
     width: 90%;
-    font-family: "Roboto Slab", serif;
+    font-family: $main-font;
   }
 }
 
@@ -96,23 +110,22 @@ body {
   display: flex;
   justify-content: center;
   padding: 10px;
+  margin: 20px 0 10px 0;
   .input {
     padding: 10px;
-    margin: 10px;
-    width: 90%;
-    font-family: "Roboto Slab", serif;
+    font-family: $main-font;
   }
   .add-category-input {
-    width: 75%;
+    width: calc(90% - 40px - 20px);
+    margin-right: 20px;
   }
   .add-category-button {
-    width: 10%;
+    width: 40px;
   }
 }
 
-.header {
-  text-align: center;
-  background-color: $box-color;
-  padding: 10px;
-  margin: 10px;
+@media (max-width: 1000px) {
+  .main-container {
+    flex-direction: column;
+  }
 }
