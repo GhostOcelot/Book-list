@@ -30,6 +30,7 @@ export const addBook = () => {
 
 const removeBook = (e) => {
   const bookToRemove = e.target.parentElement
+  console.log(bookToRemove)
   books = books.filter((item) => bookToRemove.firstElementChild.textContent !== item.title)
   localStorage.setItem("books", JSON.stringify(books))
   createBookList()
@@ -51,11 +52,11 @@ export const createBookList = () => {
     const singleBook = document.createElement("div")
     singleBook.classList.add("single-book")
     singleBook.innerHTML = `
-    <h3 class="title">${item.title}</h3>
-    <p class="author">${item.author}</p>
-    <p class="small">kategoria: ${item.category}</p>
-    <p class="small">priorytet: ${item.priority}</p>
-    <button class="remove-book-button">X</button>
+      <h3 class="title">${item.title}</h3>
+      <p class="author">${item.author}</p>
+      <span class="small">kategoria: ${item.category} | </span>
+      <span class="small">priorytet: ${item.priority}</span>
+      <button class="remove-book-button">X</button>
     `
     singleBook.lastElementChild.addEventListener("click", removeBook)
     bookList.appendChild(singleBook)
