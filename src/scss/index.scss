@@ -44,8 +44,12 @@ body {
         width: 90%;
         font-family: $main-font;
         border: none;
+        border-top: 6px solid $button-color;
+        background-color: $text-color;
       }
       .submit-button {
+        border-top: 3px solid $button-color;
+        border-bottom: 3px solid $button-color;
         cursor: pointer;
         background-color: $button-color;
         color: $text-color;
@@ -69,10 +73,13 @@ body {
         width: calc(90% - 40px - 20px);
         margin-right: 20px;
         border: none;
+        border-top: 6px solid $button-color;
       }
       .add-category-button {
+        border-top: 3px solid $button-color;
+        border-bottom: 3px solid $button-color;
         border: none;
-        width: 35px;
+        width: 42px;
 
         cursor: pointer;
         background-color: $button-color;
@@ -85,7 +92,8 @@ body {
     flex-direction: column;
     flex-basis: 70%;
     padding: 0 0 0 30px;
-    .counters-container {
+    .counters-container,
+    .filters-container {
       background-color: $box-color;
       margin: 10px 10px 30px 10px;
       padding: 20px;
@@ -146,6 +154,19 @@ body {
         }
       }
     }
+  }
+}
+.filters-container {
+  display: flex;
+  justify-content: stretch;
+  .filter-by-category {
+    flex-basis: 100%;
+    padding: 10px;
+    margin: 10px;
+    font-family: $main-font;
+    border: none;
+    border-top: 6px solid $button-color;
+    background-color: $text-color;
   }
 }
 

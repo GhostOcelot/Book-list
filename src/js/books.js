@@ -1,5 +1,5 @@
 import { updateCategoriesCounter } from "./categoriesCounter"
-
+import { createFilterSelect } from "./filterBooks"
 export class Book {
   constructor(title, author, category, priority) {
     this.title = title
@@ -9,7 +9,7 @@ export class Book {
   }
 }
 
-let books = []
+export let books = localStorage.getItem("books") ? JSON.parse(localStorage.getItem("books")) : []
 
 export const addBook = () => {
   const title = document.querySelector(".title-input").value.trim()
@@ -20,7 +20,7 @@ export const addBook = () => {
     books.push(new Book(title, author, category, priority))
     localStorage.setItem("books", JSON.stringify(books))
     document.querySelector(".add-book-form").reset()
-    createBookList()
+    createBookList(books)
     updateCategoriesCounter()
     document.querySelector(".warning").style.display = "none"
   } else {
@@ -30,10 +30,9 @@ export const addBook = () => {
 
 const removeBook = (e) => {
   const bookToRemove = e.target.parentElement
-  console.log(bookToRemove)
   books = books.filter((item) => bookToRemove.firstElementChild.textContent !== item.title)
   localStorage.setItem("books", JSON.stringify(books))
-  createBookList()
+  createBookList(books)
   updateCategoriesCounter()
 }
 
@@ -42,13 +41,10 @@ export const updateBooksCounter = () => {
   booksCounter.textContent = `Ilość książek na liście: ${books.length}`
 }
 
-export const createBookList = () => {
+export const createBookList = (currentBooksList) => {
   const bookList = document.querySelector(".book-list")
   bookList.innerHTML = null
-  JSON.parse(localStorage.getItem("books"))
-    ? (books = JSON.parse(localStorage.getItem("books")))
-    : []
-  books.forEach((item) => {
+  currentBooksList.forEach((item) => {
     const singleBook = document.createElement("div")
     singleBook.classList.add("single-book")
     singleBook.innerHTML = `
@@ -62,4 +58,5 @@ export const createBookList = () => {
     bookList.appendChild(singleBook)
   })
   updateBooksCounter()
+  createFilterSelect(currentBooksList)
 }
